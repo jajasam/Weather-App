@@ -3,12 +3,15 @@ import { Link, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Home from "./components/Home";
+import City from "./components/City"
 
 function App() {
   const [userCityInput, setUserCityInput] = useState(null);
   const [cityName, setCityName] = useState(null);
-  const [cityCoord, setCityCoord] = useState(null);
-  const [data, setData] = useState(null);
+  const [cityInfo, setCityInfo] = useState(null);
+  const [geoData, setGeoData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+
   // let resultsElem = "";
 
   function handleUserInput(e) {
@@ -20,41 +23,49 @@ function App() {
     setCityName(userCityInput);
   }
 
-  function handleCityData(lat, lon) {
-    setCityCoord({lat: lat, lon: lon})
+  function handleCityData(name, state, country, lat, lon) {
+    setCityInfo({name, state, country, lat, lon})
   }
-
 
   useEffect(() => {
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=30df8105cc64445635b2c2d7452a1466`
     )
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then(data => setGeoData(data));
   }, [cityName]);
 
   useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityCoord?.lat}&lon=${cityCoord?.lon}&appid=30df8105cc64445635b2c2d7452a1466`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityInfo?.lat}&lon=${cityInfo?.lon}&appid=30df8105cc64445635b2c2d7452a1466`)
       .then(res => res.ok && res.json())
-      .then(data => console.log(data))
-  },[cityCoord])
+      .then(data => setWeatherData(data))
+  },[cityInfo])
 
 
   
   let resultsElem = (
     <div>
-      {data?.map(({ name, country, state, lat, lon }, i) => (
-        <h2 key={i} onClick={() => handleCityData(lat, lon)}>
-          {name}, {state}, {country}
+      {geoData?.map(({ name, country, state, lat, lon }, i) => (
+        <Link to="/city">
+          <h2 key={i} onClick={() => handleCityData(name, state, country, lat, lon)}>
+          {name}, {state && `${state}, `} {country}
         </h2>
+        </Link>
       ))}
     </div>
   );
 
   return (
     <div>
-      <Home handleUserInput={handleUserInput} handleCityName={handleCityName} />
-      <div>{resultsElem}</div>
+      {/* <Routes>
+        <Route path="/"> */}
+          <Home handleUserInput={handleUserInput} handleCityName={handleCityName} />
+          <div>{resultsElem}</div>
+        {/* </Route>
+        <Route path="/city"> */}
+          {weatherData && <City cityInfo={cityInfo} weatherData={weatherData} />}
+        {/* </Route>
+      </Routes> */}
     </div>
   );
 }
