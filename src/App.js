@@ -12,12 +12,18 @@ function App() {
   // let resultsElem = "";
 
   function handleUserInput(e) {
-    setUserCityInput(e.target.value);
+    const userInputValue = e.target.value
+    setUserCityInput(userInputValue ? userInputValue : null);
   }
 
   function handleCityName() {
     setCityName(userCityInput);
   }
+
+  function handleCityData(lat, lon) {
+    setCityCoord({lat: lat, lon: lon})
+  }
+
 
   useEffect(() => {
     fetch(
@@ -27,10 +33,18 @@ function App() {
       .then((data) => setData(data));
   }, [cityName]);
 
+  useEffect(() => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityCoord?.lat}&lon=${cityCoord?.lon}&appid=30df8105cc64445635b2c2d7452a1466`)
+      .then(res => res.ok && res.json())
+      .then(data => console.log(data))
+  },[cityCoord])
+
+
+  
   let resultsElem = (
     <div>
-      {data?.map(({ name, country, state }) => (
-        <h2>
+      {data?.map(({ name, country, state, lat, lon }, i) => (
+        <h2 key={i} onClick={() => handleCityData(lat, lon)}>
           {name}, {state}, {country}
         </h2>
       ))}
