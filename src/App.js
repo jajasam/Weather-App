@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
-import Home from "./components/Home";
+import Search from "./components/Search";
 import City from "./components/City"
 
 function App() {
@@ -11,8 +10,7 @@ function App() {
   const [cityInfo, setCityInfo] = useState(null);
   const [geoData, setGeoData] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
-
-  // let resultsElem = "";
+  const isMounted = useRef(false);
 
   function handleUserInput(e) {
     const userInputValue = e.target.value
@@ -24,7 +22,7 @@ function App() {
   }
 
   function handleCityData(name, state, country, lat, lon) {
-    setCityInfo({name, state, country, lat, lon})
+    setCityInfo({name, state, country, lat, lon});
   }
 
   useEffect(() => {
@@ -36,36 +34,28 @@ function App() {
   }, [cityName]);
 
   useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityInfo?.lat}&lon=${cityInfo?.lon}&appid=30df8105cc64445635b2c2d7452a1466`)
-      .then(res => res.ok && res.json())
-      .then(data => setWeatherData(data))
+    if (isMounted.current) {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityInfo?.lat}&lon=${cityInfo?.lon}&appid=30df8105cc64445635b2c2d7452a1466`)
+        .then(res => res.ok && res.json())
+        .then(data => setWeatherData(data))
+    } else {
+      isMounted.current = true;
+    }
   },[cityInfo])
 
-
-  
-  let resultsElem = (
-    <div>
-      {geoData?.map(({ name, country, state, lat, lon }, i) => (
-        <Link to="/city">
-          <h2 key={i} onClick={() => handleCityData(name, state, country, lat, lon)}>
-          {name}, {state && `${state}, `} {country}
-        </h2>
-        </Link>
-      ))}
-    </div>
-  );
-
   return (
-    <div>
-      {/* <Routes>
-        <Route path="/"> */}
-          <Home handleUserInput={handleUserInput} handleCityName={handleCityName} />
-          <div>{resultsElem}</div>
-        {/* </Route>
-        <Route path="/city"> */}
-          {weatherData && <City cityInfo={cityInfo} weatherData={weatherData} />}
-        {/* </Route>
-      </Routes> */}
+    <div className="container">
+      <Search 
+        handleUserInput={handleUserInput}
+        handleCityName={handleCityName}
+        geoData={geoData}
+        handleCityData={handleCityData} 
+        cityInfo={cityInfo}
+      />
+      <City 
+        cityInfo={cityInfo || {}}
+        weatherData={weatherData || {}}
+      />
     </div>
   );
 }

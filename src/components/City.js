@@ -1,16 +1,18 @@
 
-function City({cityInfo, weatherData}) {
-    const {main: {feels_like, humidity, temp}, weather: [{icon, main, description}], wind: {speed}} = weatherData;
+function City(props) {
+    const {cityInfo, weatherData} = props;
     const {name, state, country} = cityInfo;
+    const {main: {feels_like, humidity, temp} = {}, weather: [{icon, main, description}], wind: {speed}} = weatherData;
 
     return (
-        <div>
+        <div className="city_container">
             <h1>{name}, {state && `${state}, `}{country}</h1>
             <img src={`http://openweathermap.org/img/w/${icon}.png`} alt={`Icon of ${description}`} />
-            <h3>{description}</h3>
-            {/* <h1>data.</h1> */}
+            <h2>{feels_like}, {humidity}, {temp}, {icon}, {main}, {description}, {speed}</h2>
+            <p>{description}</p>
+
         </div>
     )
 }
 
-export default City
+export default City;
