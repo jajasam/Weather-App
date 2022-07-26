@@ -10,6 +10,10 @@ body {
     background-color: hsl(240, 68%, 7%);
     color: white;
     display: flex;
-    justify-content: center;
-    margin: 20px 10%;
+    margin: 2rem 10%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
 }

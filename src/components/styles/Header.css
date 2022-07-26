@@ -1,0 +1,28 @@
+.header_container {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 2rem;
+}
+
+.units-btn {
+    display: flex;
+    gap:  15px;
+}
+
+.units-btn button {
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    background-color: #585676;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.current {
+    background-color: white !important;
+    color: black !important;
+}

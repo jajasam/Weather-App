@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
+import Header from "./components/Header"
 import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather"
 
@@ -10,6 +11,7 @@ function App() {
   const [location, setLocation] = useState({name: 'Cappaghnanool', state: undefined, country: 'IE', lat: 53.3201094, lon: -8.567809712252107});
   const [results, setResults] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [currentUnit, setCurrentUnit] = useState("C");
   const isMounted = useRef(false);
 
   function handleUserInput(e) {
@@ -27,6 +29,10 @@ function App() {
 
   function setLocalStorage(id) {
     localStorage.setItem("cityId", id)
+  }
+
+  function changeUnit(unit) {
+    setCurrentUnit(unit)
   }
 
   useEffect(() => {
@@ -55,6 +61,10 @@ function App() {
 
   return (
     <div className="container">
+        <Header
+          currentUnit={currentUnit}
+          changeUnit={changeUnit}
+        />
           <Search
             handleUserInput={handleUserInput}
             handleCityName={handleCityName}
@@ -67,6 +77,7 @@ function App() {
           {location && currentWeather && <CurrentWeather 
             location={location}
             currentWeather={currentWeather}
+            currentUnit={currentUnit}
         />}
     </div>
   );
