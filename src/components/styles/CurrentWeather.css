@@ -19,14 +19,10 @@
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
     gap: 2rem;
-    /* border: 1px solid red; */
     justify-content: center;
-    /* background-color: #1E213A; */
 }
 
 .weather-details > * {
-    /* border: 1px solid rgba(255, 255, 255, 0.322);
-    background-color: rgba(255, 255, 255, 0.075); */
     background-color: #2b2f4e;
     padding: 50px;
     margin: 0;

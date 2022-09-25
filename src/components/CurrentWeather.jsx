@@ -21,9 +21,6 @@ function City(props) {
             <div className="weather-details">
                 <h5>Feels like {displayTemp(feels_like)}</h5>
                 <h5>Humidity {humidity}%</h5>
-                {/* <h5>Temp {displayTemp(temp)}</h5> */}
-                <h5>Main {main}</h5>
-                {/* <h5>Description {description}</h5> */}
                 <h5>Win status {speed}mph</h5>
             </div>
         </div>

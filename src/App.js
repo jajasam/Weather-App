@@ -6,7 +6,7 @@ import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather"
 
 function App() {
-  const [userCityInput, setUserCityInput] = useState(null);
+  const [userCityInput, setUserCityInput] = useState(null)
   const [cityName, setCityName] = useState(null);
   const [location, setLocation] = useState({name: 'Cappaghnanool', state: undefined, country: 'IE', lat: 53.3201094, lon: -8.567809712252107});
   const [results, setResults] = useState(null);
@@ -21,6 +21,7 @@ function App() {
 
   function handleCityName() {
     setCityName(userCityInput);
+    setUserCityInput(null)
   }
 
   function handleCityData(name, state, country, lat, lon) {
@@ -34,6 +35,10 @@ function App() {
   function changeUnit(unit) {
     setCurrentUnit(unit)
   }
+
+  // window.addEventListener("keydown", function(e) {
+  //   if (e.keyCode === 13) setCityName(userCityInput) && setUserCityInput(null);
+  // })
 
   useEffect(() => {
       if (isMounted.current) {
@@ -66,6 +71,7 @@ function App() {
           changeUnit={changeUnit}
         />
           <Search
+            userCityInput={userCityInput}
             handleUserInput={handleUserInput}
             handleCityName={handleCityName}
             results={results}
