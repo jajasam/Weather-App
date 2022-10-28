@@ -1,12 +1,26 @@
 .header_container {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     margin-bottom: 2rem;
 }
 
-.units-btn {
+.music-player {
+    width: 80%;
+    max-width: 20rem;
+    height: 4rem;
+    border-radius: 40px;
+    background-color: #585676;
     display: flex;
-    gap:  15px;
+    align-items: center;
+    padding-left: 3%; 
+    gap: 2rem;
+}
+
+.music-player .play-btn {
+    padding: 1rem;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .units-btn button {
@@ -19,10 +33,23 @@
     background-color: #585676;
     color: white;
     cursor: pointer;
-    z-index: 10;
 }
 
 .current {
     background-color: white !important;
     color: black !important;
+}
+
+@media screen and (max-width: 768px) {
+    .header_container {
+        flex-direction: column;
+        flex-direction: column-reverse;
+    }
+    .units-btn {
+        display: flex;
+        justify-content: end;
+    }
+    .music-player {
+        margin: auto;
+    }
 }

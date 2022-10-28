@@ -12,16 +12,27 @@ function City(props) {
 
     return (
         <div className="current-weather_container">
+            <div class="location-main-info">
                 <h1>{name}, {state && `${state}, `}{country}</h1>
-            <div>
                 <img src={`http://openweathermap.org/img/w/${icon}.png`} alt={`Icon of ${description}`} />
-                <h1>{displayTemp(temp)} {description}</h1>
+                <h2>{displayTemp(temp)} {description}</h2>
             </div>
-            <h2>Today's highlights</h2>
-            <div className="weather-details">
-                <h5>Feels like {displayTemp(feels_like)}</h5>
-                <h5>Humidity {humidity}%</h5>
-                <h5>Win status {speed}mph</h5>
+            <div class="highlights">
+                <h2>Today's highlights</h2>
+                <div>
+                    <div class="highlight">
+                        <h5>Feels like {displayTemp(feels_like)}</h5>
+                    </div>
+                    <div class="highlight">
+                        <h5>Humidity {humidity}%</h5>
+                    </div>
+                    <div class="highlight">
+                        <h5>Win status {speed}mph</h5>
+                    </div>
+                    <div class="highlight">
+                        <h5>Lorem Ipsum</h5>
+                    </div>
+                </div>
             </div>
         </div>
     )

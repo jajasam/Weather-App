@@ -1,6 +1,6 @@
 import "./styles/Search.css";
 
-function search({userCityInput, handleUserInput, handleCityName, results, handleCityData, currentWeather, setLocalStorage}) {
+function search({userCityInput, handleUserInput, results, handleCityData, currentWeather, setLocalStorage}) {
     let resultsElem = (
         <div className="results">
             {results?.map(({ name, country, state, lat, lon }, i) => (
@@ -18,11 +18,13 @@ function search({userCityInput, handleUserInput, handleCityName, results, handle
             <div className="search-container-content">
                 <div className="search">
                     <input type="text" onChange={(e) => handleUserInput(e)} placeholder="Search location here" />
-                    <button onClick={() => handleCityName()}>Search</button>
                 </div>
-                {/* <div className="results-dropdown">
-                    {results && resultsElem}
-                </div> */}
+                {
+                    userCityInput &&
+                    <div className="results-dropdown">
+                        {results && resultsElem}
+                    </div>
+                }               
             </div>
         </div>
     )
