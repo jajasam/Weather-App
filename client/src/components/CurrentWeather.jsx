@@ -1,6 +1,6 @@
 import "./styles/CurrentWeather.css";
 
-function City(props) {
+function CurrentWeather(props) {
     const {location, currentWeather, currentUnit} = props;
     const {name, state, country} = location;
     const {main: {feels_like, humidity, temp, visibility}, weather: [{icon, main, description}], wind: {speed}} = currentWeather;
@@ -12,14 +12,17 @@ function City(props) {
 
     return (
         <div className="current-weather_container">
+            <h1>{name}, {state && `${state}, `}{country}</h1>
             <div className="location-main-info">
-                <h1>{name}, {state && `${state}, `}{country}</h1>
-                <img src={`http://openweathermap.org/img/w/${icon}.png`} alt={`Icon of ${description}`} />
-                <h2>{displayTemp(temp)} {description}</h2>
-            </div>
-            <div className="highlights">
-                <h2>Today's highlights</h2>
+                <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={`Icon of ${description}`} />
                 <div>
+                    <h2>{displayTemp(temp)}</h2>
+                    <h2>{description}</h2>
+                </div>
+            </div>
+            <div className="highlights_container">
+                {/* <h2>Today's highlights</h2> */}
+                <div className="highlights">
                     <div className="highlight">
                         <h5>Feels like {displayTemp(feels_like)}</h5>
                     </div>
@@ -38,4 +41,4 @@ function City(props) {
     )
 }
 
-export default City;
+export default CurrentWeather;

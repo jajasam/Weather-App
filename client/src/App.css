@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
+:root {
+   --blue: #0E67B4;
+   --light-blue: #4273bd;
+   --dark-blue: #084C86;
+   --orange: #F79B26;
+   --yellow: #ffdc00;
+}
+
+.hero-img {
+    /* Photo by Leslie Luo on Unsplash */
+    background: url("./components/styles/assets/hero.jpg") center/cover no-repeat;
+    z-index: -50;    
+    width: 100vw !important;
+    height: 100vh;
+    position: absolute;
+    filter: brightness(90%);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -8,18 +26,11 @@ body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
     color: black;
-    margin: 2rem 10%;
+    background-color: #f7f7f7;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    margin:auto;
+main {
     max-width: 1200px;
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        margin: 1rem 5%;;
-    }
+    margin: auto;
+    padding-top: 4rem;
 }

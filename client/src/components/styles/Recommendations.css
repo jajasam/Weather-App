@@ -1,0 +1,68 @@
+.recommendations_container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 4rem;
+    align-items: center;
+}
+
+.recommendation {
+    padding: 0 10%;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.recommendations_container .overview {
+    display: flex;
+    max-height: 100px;
+    align-items: center;
+    /* border: 1px solid red; */
+    /* background-color: var(--orange); */
+    max-width: 40%;
+    border-radius: 16px;
+    /* color: white; */
+}
+
+.recommendations_container .details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12rem;
+    max-width: 50%;
+}
+
+.recommendation:nth-of-type(even) {
+    display: flex;
+    justify-content: end;
+}
+
+.recommendation span::after {
+    content: "";
+    width: 40px;
+    height: 20px;
+    opacity: 0.3;
+    z-index: -10;
+    position: absolute;
+    background-color: var(--orange);
+    border-radius: 5px;
+}
+
+.movie-icon {
+    background: url("../styles/assets/cinema.png") no-repeat center/cover;
+    width: 150px;
+    height: 150px;
+}
+
+.music-icon {
+    background: url("../styles/assets/headphone.png") no-repeat center/cover;
+    width: 150px;
+    height: 150px;
+}
+
+.recipe-icon {
+    background: url("../styles/assets/cooking.png") no-repeat center/cover;
+    width: 150px;
+    height: 150px;
+}

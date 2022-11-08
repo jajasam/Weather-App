@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header"
 import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather"
+import Recommendations from "./components/recommendations/Recommendations"
 
 function App() {
   const [userCityInput, setUserCityInput] = useState(null)
@@ -34,7 +35,7 @@ function App() {
   useEffect(() => {
       if (isMounted.current) {
         fetch(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${userCityInput}&limit=5&appid=30df8105cc64445635b2c2d7452a1466`
+          `http://api.openweathermap.org/geo/1.0/direct?q=${userCityInput}&limit=5&appid=${process.env.REACT_APP_API_KEY_OPEN_WEATHER}`
         )
           .then((res) => res.json())
           .then(data => setResults(data))
@@ -46,58 +47,52 @@ function App() {
 
   useEffect(() => {
     if (isMounted.current) {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location?.lat}&lon=${location?.lon}&appid=30df8105cc64445635b2c2d7452a1466`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${location?.lat}&lon=${location?.lon}&appid=${process.env.REACT_APP_API_KEY_OPEN_WEATHER}`)
         .then(res => res.ok && res.json())
         .then(data => setCurrentWeather(data))
-        .catch(e => console.log(e))
+        .catch(err => console.error(err))
     } else {
       isMounted.current = true;
     }
   },[location])
 
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     fetch("https://api.spotify.com/v1/tracks/{id}",
-  //     {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${userAccessToken}`
-  //     }
-  //   })
-  //       .then(res => res.ok && res.json())
-  //       .then(data => setCurrentSong(data))
-  //       .catch(e => console.log(e))
-  //   } else {
-  //     isMounted.current = true;
-  //   }
-  // },[location])
+  console.log(currentWeather)
 
   return (
-    <div className="container">
+    <>
+      <div className="hero-img"></div>
+      <header>
         <Header
         currentSong={currentSong}
           currentUnit={currentUnit}
           changeUnit={changeUnit}
         />
-          <Search
-            userCityInput={userCityInput}
-            handleUserInput={handleUserInput}
-            results={results}
-            handleCityData={handleCityData} 
+      </header>
+      <main>
+        {/* <Search
+          userCityInput={userCityInput}
+          handleUserInput={handleUserInput}
+          results={results}
+          handleCityData={handleCityData} 
+          location={location}
+          currentWeather={currentWeather}
+          setLocalStorage={setLocalStorage}
+        /> */}
+        {
+          location &&
+          currentWeather &&
+          <CurrentWeather 
             location={location}
             currentWeather={currentWeather}
-            setLocalStorage={setLocalStorage}
+            currentUnit={currentUnit}
           />
-          {
-            location &&
-            currentWeather &&
-            <CurrentWeather 
-              location={location}
-              currentWeather={currentWeather}
-              currentUnit={currentUnit}
-            />
-          }
-    </div>
+        }
+        <div>
+          Previsions 7 jours
+        </div>
+        <Recommendations />
+      </main>
+    </>
   );
 }
 

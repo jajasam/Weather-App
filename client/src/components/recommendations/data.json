@@ -1,0 +1,45 @@
+[
+    {
+        "description" : {
+            "clear sky": {
+                "recipe": "salad",
+                "music": "sunny",
+                "movie": "comedy"
+            },
+            "rain": {
+                "recipe": "soup",
+                "music": "rain",
+                "movie": "drama"
+            },
+            "snow": {
+                "recipe": "slow cooker",
+                "music": "winter",
+                "movie": "winter"
+            }
+        },
+        "weather": {
+            "cool": {
+                "recipe": "",
+                "music": "",
+                "movie": ""
+            },
+            "hot": {
+                "recipe": "salad",
+                "music": "",
+                "movie": ""
+            }
+        },
+        "time": {
+            "morning": {
+                "recipe": "breakfast",
+                "music": "morning",
+                "movie": "adventure"
+            },
+            "night": {
+                "recipe": "dinner",
+                "music": "night",
+                "movie": "action"
+            }
+        }
+    }
+]

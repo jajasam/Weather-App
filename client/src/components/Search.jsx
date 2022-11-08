@@ -15,8 +15,8 @@ function search({userCityInput, handleUserInput, results, handleCityData, curren
 
     return (
         <div className="search_container">
-            <div className="search-container-content">
-                <div className="search">
+            <div>
+                <div className="search-form">
                     <input type="text" onChange={(e) => handleUserInput(e)} placeholder="Search location here" />
                 </div>
                 {
