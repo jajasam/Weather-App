@@ -17,8 +17,8 @@ function Recipe() {
     return (
         <div className="recommendation">
             <div className="overview">
-                <h3>Make a <span>pizza</span></h3>
                 <div class="recipe-icon"></div>
+                <h3>Make a <span>pizza</span></h3>
             </div>
             <div className="details">
                 <img src="https://www.edamam.com/food-img/433/433749733fd8a22560cdb451b1317be1.jpg" alt="" />

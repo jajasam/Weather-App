@@ -60,14 +60,24 @@ function App() {
 
   return (
     <>
-      <div className="hero-img"></div>
-      <header>
-        <Header
-        currentSong={currentSong}
-          currentUnit={currentUnit}
-          changeUnit={changeUnit}
-        />
-      </header>
+      <div className="hero-img">
+        <header>
+          <Header
+            currentSong={currentSong}
+            currentUnit={currentUnit}
+            changeUnit={changeUnit}
+          />
+        </header>
+        {
+          location &&
+          currentWeather &&
+          <CurrentWeather 
+            location={location}
+            currentWeather={currentWeather}
+            currentUnit={currentUnit}
+          />
+        }
+      </div>
       <main>
         {/* <Search
           userCityInput={userCityInput}
@@ -78,20 +88,14 @@ function App() {
           currentWeather={currentWeather}
           setLocalStorage={setLocalStorage}
         /> */}
-        {
-          location &&
-          currentWeather &&
-          <CurrentWeather 
-            location={location}
-            currentWeather={currentWeather}
-            currentUnit={currentUnit}
-          />
-        }
-        <div>
+        {/* <div>
           Previsions 7 jours
-        </div>
+        </div> */}
         <Recommendations />
       </main>
+      <footer>
+        2022 - Created by Jana Samson
+      </footer>
     </>
   );
 }

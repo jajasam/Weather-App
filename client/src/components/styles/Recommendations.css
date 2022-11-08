@@ -2,8 +2,15 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin-top: 4rem;
     align-items: center;
+    font-size: 1.2rem;
+}
+
+.recommendations_container h2 {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 2rem;
 }
 
 .recommendation {
@@ -19,11 +26,13 @@
     display: flex;
     max-height: 100px;
     align-items: center;
-    /* border: 1px solid red; */
-    /* background-color: var(--orange); */
-    max-width: 40%;
     border-radius: 16px;
     /* color: white; */
+}
+
+.recommendations_container .overview h3 {
+    letter-spacing: 0.8px;
+    font-size: 1.4rem;
 }
 
 .recommendations_container .details {
@@ -36,17 +45,6 @@
 .recommendation:nth-of-type(even) {
     display: flex;
     justify-content: end;
-}
-
-.recommendation span::after {
-    content: "";
-    width: 40px;
-    height: 20px;
-    opacity: 0.3;
-    z-index: -10;
-    position: absolute;
-    background-color: var(--orange);
-    border-radius: 5px;
 }
 
 .movie-icon {
@@ -65,4 +63,21 @@
     background: url("../styles/assets/cooking.png") no-repeat center/cover;
     width: 150px;
     height: 150px;
+}
+
+.recommendations_container span {
+    position: relative;
+}
+
+.recommendations_container span::before {
+    background-color: var(--orange);
+    content: "";
+    position: absolute;
+    width: calc(100% + 4px);
+    height: 60%;
+    left: -2px;
+    bottom: 0;
+    z-index: -1;
+    transform: rotate(-2deg);
+    opacity: 0.7;
 }
