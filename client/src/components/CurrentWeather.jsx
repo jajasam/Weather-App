@@ -1,4 +1,4 @@
-import "./styles/CurrentWeather.css";
+import "../styles/CurrentWeather.css";
 
 function CurrentWeather(props) {
     const {location, currentWeather, currentUnit} = props;
@@ -30,7 +30,7 @@ function CurrentWeather(props) {
                         <h5>Humidity {humidity}%</h5>
                     </div>
                     <div className="highlight">
-                        <h5>Win status {speed}mph</h5>
+                        <h5>Wind status {speed}mph</h5>
                     </div>
                     <div className="highlight">
                         <h5>Lorem Ipsum</h5>

@@ -27,13 +27,25 @@ main {
 
 footer {
     background-color: var(--orange);
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 1rem;
     color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+footer div {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: end;
 }
 
 .hero-img {
     /* Photo by Leslie Luo on Unsplash */
-    background: url("./components/styles/assets/hero.jpg") center/cover no-repeat;
+    background: url("./assets/hero.jpg") center/cover no-repeat;
     z-index: -50;    
     width: 100vw !important;
     min-height: 800px;

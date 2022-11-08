@@ -16,7 +16,7 @@ function Movie() {
     const { title, backdrop_path, id} = movie;
 
     return (
-        <div className="recommendation">
+        <>
             <div className="overview">
                 <div className="movie-icon"></div>
                 <h3>Watch an <span>action</span> movie</h3>
@@ -26,7 +26,7 @@ function Movie() {
                 <h4>{title}</h4>
                 <div>{`See more action movies ->`}</div>
             </div>
-        </div>
+        </>
     )
 }
 

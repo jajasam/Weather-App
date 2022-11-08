@@ -43,6 +43,7 @@ header {
 .current {
     background-color: var(--orange) !important;
     color: white !important;
+    font-weight: 700;
 }
 
 .logo {
@@ -50,7 +51,7 @@ header {
     width: 200px;
     z-index:50;
     margin-top: 30px;
-    background: center/cover url("./assets/brand.png") no-repeat;
+    background: center/cover url("../assets/brand.png") no-repeat;
 }
 /* 
 .logo::before {

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 import Header from "./components/Header"
-import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather"
 import Recommendations from "./components/recommendations/Recommendations"
 
@@ -63,9 +62,15 @@ function App() {
       <div className="hero-img">
         <header>
           <Header
-            currentSong={currentSong}
             currentUnit={currentUnit}
             changeUnit={changeUnit}
+            userCityInput={userCityInput}
+            handleUserInput={handleUserInput}
+            results={results}
+            handleCityData={handleCityData} 
+            location={location}
+            currentWeather={currentWeather}
+            setLocalStorage={setLocalStorage}
           />
         </header>
         {
@@ -79,22 +84,15 @@ function App() {
         }
       </div>
       <main>
-        {/* <Search
-          userCityInput={userCityInput}
-          handleUserInput={handleUserInput}
-          results={results}
-          handleCityData={handleCityData} 
-          location={location}
-          currentWeather={currentWeather}
-          setLocalStorage={setLocalStorage}
-        /> */}
         {/* <div>
           Previsions 7 jours
         </div> */}
         <Recommendations />
       </main>
       <footer>
-        2022 - Created by Jana Samson
+        <div>
+          <small>2022 - Created by Jana Samson</small>
+        </div>
       </footer>
     </>
   );

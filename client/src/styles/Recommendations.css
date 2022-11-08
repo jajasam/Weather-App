@@ -20,6 +20,9 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 20px;
 }
 
 .recommendations_container .overview {
@@ -42,25 +45,20 @@
     max-width: 50%;
 }
 
-.recommendation:nth-of-type(even) {
-    display: flex;
-    justify-content: end;
-}
-
 .movie-icon {
-    background: url("../styles/assets/cinema.png") no-repeat center/cover;
+    background: url("../assets/cinema.png") no-repeat center/cover;
     width: 150px;
     height: 150px;
 }
 
 .music-icon {
-    background: url("../styles/assets/headphone.png") no-repeat center/cover;
+    background: url("../assets/headphone.png") no-repeat center/cover;
     width: 150px;
     height: 150px;
 }
 
 .recipe-icon {
-    background: url("../styles/assets/cooking.png") no-repeat center/cover;
+    background: url("../assets/cooking.png") no-repeat center/cover;
     width: 150px;
     height: 150px;
 }

@@ -15,7 +15,7 @@ function Recipe() {
     // })
 
     return (
-        <div className="recommendation">
+        <>
             <div className="overview">
                 <div class="recipe-icon"></div>
                 <h3>Make a <span>pizza</span></h3>
@@ -25,7 +25,7 @@ function Recipe() {
                 <h4>Pizza Dough</h4>
                 <div>See more pizza recipes</div>
             </div>
-        </div>
+        </>
     )
 }
 

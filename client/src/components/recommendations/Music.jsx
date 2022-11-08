@@ -2,7 +2,7 @@ import React from 'react'
 
 function Music() {
     return (
-        <div className="recommendation">
+        <>
             <div className="overview">
                 <div class="music-icon"></div>
                 <h3>Listen to <span>Black Coffee</span></h3>
@@ -12,7 +12,7 @@ function Music() {
                 <h4>Deep in the bottom - Black Coffee</h4>
                 <div>See more songs from Drake</div>
             </div>
-        </div>
+        </>
     )
 }
 
