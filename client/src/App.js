@@ -4,9 +4,7 @@ import "./App.css";
 import Header from "./components/Header"
 import CurrentWeather from "./components/CurrentWeather"
 import Recommendations from "./components/recommendations/Recommendations"
-import Map from "./components/Map"
 import Previsions from "./components/Previsions"
-import axios from "axios";
 
 function App() {
   const [userCityInput, setUserCityInput] = useState(null)
@@ -14,8 +12,6 @@ function App() {
   const [results, setResults] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [currentUnit, setCurrentUnit] = useState("C");
-  const [mapSetting, setMapSetting] = useState("clouds_new")
-  const [map, setMap] = useState("");
   const [previsions, setPrevisions] = useState(null)
   const isMounted = useRef(false);
 
@@ -36,23 +32,9 @@ function App() {
     setCurrentUnit(unit)
   }
 
-  // //get map from open weather API
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     fetch(
-  //       `https://tile.openweathermap.org/map/${mapSetting}/2/3/2.png?appid=${process.env.REACT_APP_API_KEY_OPEN_WEATHER}`
-  //     )
-  //       .then((res) => res.json())
-  //       .then(data => console.log(data))
-  //       .catch(e => console.error(e))
-  //     } else {
-  //       isMounted.current = true;
-  //     }
-  //   }, [location, mapSetting]);
-
-
   useEffect(() => {
       if (isMounted.current) {
+        //get 5 cities suggestions based on user input
         fetch(
           `http://api.openweathermap.org/geo/1.0/direct?q=${userCityInput}&limit=5&appid=${process.env.REACT_APP_API_KEY_OPEN_WEATHER}`
         )
@@ -65,8 +47,8 @@ function App() {
   }, [userCityInput]);
 
   useEffect(() => {
-    //get current weather and daily forecast (7 days)
     if (isMounted.current) {
+      //get current weather and daily forecast (7 days)
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&exclude=minutely,hourly,alerts&appid=${process.env.REACT_APP_API_KEY_OPEN_WEATHER}`)
         .then(res => res.ok && res.json())
         .then(data => {
@@ -106,13 +88,6 @@ function App() {
         }
       </div>
       <main>
-        {/* <div>
-          Previsions 7 jours
-        </div> */}
-        {/* <Map 
-        map={map}
-        mapSetting={mapSetting}
-        /> */}
         <Previsions
         prevs={previsions}
         />
