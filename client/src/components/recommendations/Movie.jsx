@@ -10,22 +10,24 @@ function Movie() {
         axios
         .get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=1`)
         .then(res => setMovie(res.data.results[1]))
-        .catch(err => console.log(err))
+        .catch(err => console.error(err))
     })
 
     const { title, backdrop_path, id} = movie;
 
     return (
         <>
-            <div className="overview">
-                <div className="movie-icon"></div>
-                <h3>Watch an <span>action</span> movie</h3>
+            <div>
+                <div className="overview">
+                    <div className="movie-icon"></div>
+                    <h3>Watch an <span>action</span> movie</h3>
+                </div>
+                <div className="details">
+                    {/* <img src={`https://image.tmdb.org/t/p/w500/${movie[backdrop_path]}`} alt="" />
+                    <h4>{title}</h4> */}
+                </div>
             </div>
-            <div className="details">
-                <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt="" />
-                <h4>{title}</h4>
-                <div>{`See more action movies ->`}</div>
-            </div>
+            <div>See move actions movies</div>
         </>
     )
 }

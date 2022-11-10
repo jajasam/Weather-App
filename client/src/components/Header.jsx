@@ -1,10 +1,14 @@
 import "../styles/Header.css"
 
-function Header({currentUnit, changeUnit, userCityInput, handleUserInput, results, handleCityData, currentWeather, setLocalStorage}) {
+function Header({currentUnit, changeUnit, userCityInput, handleUserInput, results, handleCityData, currentWeather,
+    //  setLocalStorage
+    }) {
     let resultsElem = (
         <div className="results">
             {results?.map(({ name, country, state, lat, lon }, i) => (
-                <div onClick={() => handleCityData(name, state, country, lat, lon ) && setLocalStorage(currentWeather.id)} key={i} className="city-link" >
+                <div onClick={() => handleCityData(name, state, country, lat, lon )}
+                // && setLocalStorage(currentWeather.id)} 
+                key={i} className="city-link" >
                     <p>
                         {name}, {state && `${state}, `} {country}
                     </p>
@@ -15,7 +19,7 @@ function Header({currentUnit, changeUnit, userCityInput, handleUserInput, result
 
     return (
         <>
-            <div class="logo"></div>
+            <div className="logo"></div>
             <div className="search_container">
                 <div>
                     <div className="search-form">

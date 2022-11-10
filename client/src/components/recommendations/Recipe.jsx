@@ -17,14 +17,14 @@ function Recipe() {
     return (
         <>
             <div className="overview">
-                <div class="recipe-icon"></div>
+                <div className="recipe-icon"></div>
                 <h3>Make a <span>pizza</span></h3>
             </div>
             <div className="details">
                 <img src="https://www.edamam.com/food-img/433/433749733fd8a22560cdb451b1317be1.jpg" alt="" />
                 <h4>Pizza Dough</h4>
-                <div>See more pizza recipes</div>
             </div>
+            <div>See more pizza recipes</div>
         </>
     )
 }

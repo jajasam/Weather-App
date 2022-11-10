@@ -13,6 +13,7 @@ function Recommendations(weatherCondition) {
     const [recipe, setRecipe] = useState("")
     const [music, setMusic] = useState("")
 
+
     return (
         <div className="recommendations_container">
             <h2>Looks like it's a <span>rainy</span> day ! Why not...</h2>

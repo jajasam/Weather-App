@@ -3,7 +3,7 @@ import "../styles/CurrentWeather.css";
 function CurrentWeather(props) {
     const {location, currentWeather, currentUnit} = props;
     const {name, state, country} = location;
-    const {main: {feels_like, humidity, temp, visibility}, weather: [{icon, main, description}], wind: {speed}} = currentWeather;
+    const {temp, feels_like, pressure, humidity, wind_speed, visibility, weather: [{icon, main, description}]} = currentWeather;
 
     function displayTemp(tempInKelvin) {
         if (currentUnit === "C") return Math.floor((tempInKelvin - 273.15)) + "℃";
@@ -24,16 +24,36 @@ function CurrentWeather(props) {
                 {/* <h2>Today's highlights</h2> */}
                 <div className="highlights">
                     <div className="highlight">
-                        <h5>Feels like {displayTemp(feels_like)}</h5>
+                        <p>Feels like</p>
+                        <h5>{displayTemp(feels_like)}</h5>
                     </div>
                     <div className="highlight">
-                        <h5>Humidity {humidity}%</h5>
+                        <p>Humidity</p>
+                        <h5>{humidity}%</h5>
                     </div>
                     <div className="highlight">
-                        <h5>Wind status {speed}mph</h5>
+                        <p>Wind status</p>
+                        <h5>{wind_speed}mph</h5>
                     </div>
                     <div className="highlight">
-                        <h5>Lorem Ipsum</h5>
+                        <p>Visibility</p>
+                        <h5>{visibility}</h5>
+                    </div>
+                    <div className="highlight">
+                        <p>Pressure</p>
+                        <h5>{pressure}</h5>
+                    </div>
+                    <div className="highlight">
+                        <p>Feels like</p>
+                        <h5>{displayTemp(feels_like)}</h5>
+                    </div>
+                    <div className="highlight">
+                        <p>Feels like</p>
+                        <h5>{displayTemp(feels_like)}</h5>
+                    </div>
+                    <div className="highlight">
+                        <p>Feels like</p>
+                        <h5>{displayTemp(feels_like)}</h5>
                     </div>
                 </div>
             </div>

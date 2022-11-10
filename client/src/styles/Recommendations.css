@@ -10,7 +10,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 200;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .recommendation {
@@ -23,6 +23,7 @@
     justify-content: center;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     border-radius: 20px;
+    height: 100vh;
 }
 
 .recommendations_container .overview {
@@ -35,7 +36,9 @@
 
 .recommendations_container .overview h3 {
     letter-spacing: 0.8px;
-    font-size: 1.4rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 200;
 }
 
 .recommendations_container .details {
@@ -43,6 +46,11 @@
     flex-direction: column;
     margin-left: 12rem;
     max-width: 50%;
+}
+
+.recommendations_container .details img {
+    width: 400px;
+    height: auto;
 }
 
 .movie-icon {
